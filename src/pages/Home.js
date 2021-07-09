@@ -24,12 +24,17 @@ function ShowMovies() {
 
   }, [search]); 
 
+  function handleSubmit(event, query) {
+    console.log(event, query);
+    event.preventDefault();
+    setSearch(query)
+  }
+
 
   return (
     <div>
       <form onSubmit={event => {
-        event.preventDefault()
-        setSearch(query)
+        handleSubmit(event, query)
       }}>
         <input
           type="text"
@@ -43,12 +48,13 @@ function ShowMovies() {
         query ? 
         <ul>
           {data.map((item, i) => (
-            /* {<li key={item.id}>
-              <img src={`https://image.tmdb.org/t/p/w92/${item.poster_path}` } />
-              {item.title}
-
-            </li> }*/
-            <Movie key={i} id={item.id} poster={item.poster_path} title={item.title} description={item.overview} />
+            <Movie 
+              key={i} 
+              id={item.id} 
+              poster={item.poster_path} 
+              title={item.title} 
+              description={item.overview} 
+            />
           ))} 
         </ul> : ''
       }
