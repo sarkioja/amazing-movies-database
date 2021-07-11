@@ -33,7 +33,7 @@ module.exports = {
     },
     mode: 'development',
     plugins: [
-        new Dotenv,
+        //new Dotenv,
         new HtmlWebpackPlugin({
             template: 'src/static/index.html'
         })
