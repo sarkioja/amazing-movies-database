@@ -6,7 +6,7 @@ import Home from './pages/Home';
 import Movie from './pages/Movie';
 //import NotFound from './pages/NotFound';
 
-import './styles/index.css';
+import './static/styles/index.css';
 
 const appRouting = (
   <Router>

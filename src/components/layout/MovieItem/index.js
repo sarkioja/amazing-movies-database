@@ -3,7 +3,7 @@ import { useHistory } from "react-router";
 
 import * as S from './styled'
 
-function Movie({id, poster, title, description}) {
+function MovieItem({id, poster, title, description}) {
   const history = useHistory();
   const posterPath = `https://image.tmdb.org/t/p/w92/${poster}`
   const fillerPath = `https://www.fillmurray.com/92/138`
@@ -26,4 +26,4 @@ function Movie({id, poster, title, description}) {
   )
 }
 
-export default Movie
+export default MovieItem

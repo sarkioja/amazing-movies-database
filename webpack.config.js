@@ -17,14 +17,25 @@ module.exports = {
             { 
                 test: /\.css$/, 
                 use: ['style-loader', 'css-loader'] 
-            }
+            }, 
+            {
+                test: /\.(png|jp(e*)g|svg|gif)$/,
+                use: [
+                  {
+                    loader: 'file-loader',
+                    options: {
+                      name: 'images/[hash]-[name].[ext]',
+                    },
+                  },
+                ],
+            },
         ]
     },
     mode: 'development',
     plugins: [
         new Dotenv,
         new HtmlWebpackPlugin({
-            template: 'dist/index.html'
+            template: 'src/static/index.html'
         })
     ]
 }

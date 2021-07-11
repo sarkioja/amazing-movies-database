@@ -1,22 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import {ErrorBoundary} from 'react-error-boundary'
+import React, { useState, useEffect, useReducer, Fragment } from 'react';
+import { ErrorBoundary } from 'react-error-boundary'
+
+import { SearchContext } from '../components/core/SearchContext'
 
 import ErrorFallback from '../components/layout/ErrorFallback';
-import SearchMovie from '../services/Movies'
-import Movie from '../components/layout/Movie';
+import Hero from '../components/layout/HeroContainer';
+import Search from '../components/layout/Search';
+import SearchResults from '../components/layout/SearchResults';
+import Footer from '../components/layout/Footer';
 
-function ShowMovies() {
+/* function SearchResultsxxx() {
   const [data, setData] = useState([]); 
   const [query, setQuery] = useState('');
   const [search, setSearch] = useState();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (query) {
       const fetchData = async () => {
+        setIsLoading(true);
         const movies = await SearchMovie(search)
   
         console.log('setou o data', movies);
         setData(movies.results);
+        setIsLoading(false);
       }
   
       fetchData();
@@ -25,7 +32,6 @@ function ShowMovies() {
   }, [search]); 
 
   function handleSubmit(event, query) {
-    console.log(event, query);
     event.preventDefault();
     setSearch(query)
   }
@@ -33,18 +39,20 @@ function ShowMovies() {
 
   return (
     <div>
-      <form onSubmit={event => {
-        handleSubmit(event, query)
-      }}>
+      <form onSubmit={event => handleSubmit(event, query) }>
         <input
           type="text"
           value={query}
           onChange={event => setQuery(event.target.value)}
+          placeholder="Search for your favourite movies"
         />
         <button type="submit"> Search </button>
       </form>
 
       {
+        isLoading ? (
+          <div> Loading... </div>
+        ) :
         query ? 
         <ul>
           {data.map((item, i) => (
@@ -57,21 +65,34 @@ function ShowMovies() {
             />
           ))} 
         </ul> : ''
+
       }
     </div>
 
   )
-}
+} */
+
 
 function Home () {  
-  return (
-      <div>
-        <h1> The Amazing Movies Database 🎬 </h1>
+  const [query, setQuery] = useState('');
+  const [search, setSearch] = useState();
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const value = { query, search, data, isLoading, setQuery, setSearch, setData, setIsLoading };
 
+  return (
+    <Fragment>
+      <Hero title=" The Amazing Movies Database 🎬 "/>
+
+      <SearchContext.Provider value={ value } >
         <ErrorBoundary FallbackComponent={ErrorFallback}>
-          <ShowMovies />
+          <Search />
+          <SearchResults />
         </ErrorBoundary>
-      </div>
+      </SearchContext.Provider>
+
+      <Footer />
+    </Fragment>
   )
 }
 

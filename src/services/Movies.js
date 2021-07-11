@@ -1,6 +1,6 @@
 import API from './api'
 
-const SearchMovies = async (searchTerm) => {
+export const SearchMovie = async (searchTerm) => {
   try {
     const url = `search/movie?`
     const options = `language=en-US`
@@ -15,4 +15,17 @@ const SearchMovies = async (searchTerm) => {
   }
 }
 
-export default SearchMovies;
+export const MovieDetails = async (id) => {
+
+  try {
+    const url = `movie/${id}`
+    const options = `?language=en-US`
+
+    const response = await API.get(url + options)  
+    return response.data
+
+  } catch(error) {
+    console.log(`Request failed ${error}`);
+    return error
+  }
+}
