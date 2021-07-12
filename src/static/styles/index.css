@@ -8,3 +8,9 @@
 body {
   font-family: 'Roboto', sans-serif;
 }
+
+#root {
+  border: 1px solid #eee;
+  margin: 0 auto;
+  max-width: 800px;
+}

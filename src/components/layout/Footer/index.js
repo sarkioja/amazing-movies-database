@@ -1,21 +1,20 @@
 import React from 'react'
 
+import * as S from './styled'
 import logo from '../../../static/imgs/tmdb.svg'
 
 function Footer() {
   return (
-    <div>
-      <hr />
-      <div>
-      <p> 
-        Amazing Movies Database <br />
-        <span> This product uses the TMDb API but is not endorsed or certified by TMDb. </span>
-      </p>
+    <S.FooterContainer>
 
-      <img src={logo} alt="The Movie Database Logo" style={{width: "8em"}} /> 
-      </div>
+        <S.Text> 
+          The Amazing Movies Database 
+          <S.Disclaimer> This product uses the TMDb API but is not endorsed or certified by TMDb. </S.Disclaimer>
+        </S.Text>
 
-    </div>
+        <S.TmdbLogo src={logo} alt="The Movie Database Logo" /> 
+
+    </S.FooterContainer>
   )
 }
 

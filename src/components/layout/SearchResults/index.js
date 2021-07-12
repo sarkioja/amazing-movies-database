@@ -1,15 +1,14 @@
-import React, { useState, useEffect, useContext, Fragment } from 'react';
+import React, { useEffect, useContext, Fragment } from 'react';
 
-import { SearchContext } from '../../core/SearchContext'
+import * as S from './styled'
+
+import { StateContext } from '../../../state'
 import { SearchMovie } from '../../../services/Movies'
 
 import MovieItem from '../MovieItem';
 
 function SearchResults() {
-  const { query } = useContext(SearchContext)
-  const { search } = useContext(SearchContext)
-  const { data, setData } = useContext(SearchContext)
-  const { isLoading, setIsLoading } = useContext(SearchContext); 
+  const { query, search, setData, setIsLoading } = useContext(StateContext)
 
   useEffect(() => {
     if (query) {
@@ -27,24 +26,51 @@ function SearchResults() {
 
   }, [search]); 
 
+  const Loading = () => {
+    const { isLoading } = useContext(StateContext); 
+    
+    if (!isLoading) return null
 
-  return (
-    <Fragment>
-      {
-        isLoading ? ( <div> Loading... </div> ) :
-        search ? 
-          ( <ul>
+    return (
+      <S.Loading> 
+        <S.LoadingIcon /> 
+        Loading... 
+      </S.Loading>
+    )
+  }
+
+  const Results = () => {
+    const { search, data } = useContext(StateContext); 
+    
+    if (!search) return null
+    if (data.length == 0) {
+      return (
+        <S.NoResult>  No results found for {search}. </S.NoResult> 
+      )
+    }
+
+    return (
+          <S.List>
+            {/* <h2> Search Results for {search}: </h2> */}
             { data.map((item, i) => (
               <MovieItem 
                 key={i} 
                 id={item.id} 
                 poster={item.poster_path} 
                 title={item.title} 
+                year={item.release_date && item.release_date.split('-')[0]}
                 description={item.overview} 
               />
             )) }
-          </ul> ) : ''
-      }
+          </S.List>
+    )
+  }
+
+
+  return (
+    <Fragment>
+      <Loading />
+      <Results />
     </Fragment>
   )
 }

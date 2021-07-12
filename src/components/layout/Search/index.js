@@ -1,13 +1,13 @@
 import React, { useContext, Fragment } from 'react';
 
-import { SearchContext } from '../../core/SearchContext'
+import { StateContext } from '../../../state'
 
 import * as S from './styled'
 
 function Search() {
-  const { query, setQuery } = useContext(SearchContext)
-  const { setSearch } = useContext(SearchContext);
-  const { isLoading, setIsLoading } = useContext(SearchContext); 
+  const { query, setQuery } = useContext(StateContext)
+  const { setSearch } = useContext(StateContext);
+  const { isLoading } = useContext(StateContext); 
 
 
   function handleSubmit(event, query) {

@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { useHistory } from "react-router";
+
+import Menu from '../Menu'
 
 import * as S from './styled'
 
@@ -12,11 +14,16 @@ function Hero(props) {
   }
 
   return (
+    <Fragment>
       <S.Header>
         <S.Title onClick={ handleClick }>
           <S.Link> { title } </S.Link>
         </S.Title>
       </S.Header> 
+
+      <Menu />
+    </Fragment>
+
   )
 }
 

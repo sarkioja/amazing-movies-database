@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 
-export const SearchContext = createContext({
+export const StateContext = createContext({
   query: '',
   search: '',
   data: [],
