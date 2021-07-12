@@ -9,7 +9,7 @@
   "scripts": {
     "start": "webpack serve",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "build": "REACT_APP_TMDB_API_KEY=process.env.REACT_APP_TMDB_API_KEY webpack"
   },
   "dependencies": {
     "dotenv-webpack": "^7.0.3",
