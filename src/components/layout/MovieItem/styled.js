@@ -1,7 +1,10 @@
 import styled from "styled-components";
 
-import { Favorite } from "@styled-icons/material/Favorite"
-import { WatchLater } from '@styled-icons/material/WatchLater'
+import { FavoriteBorder as Favorite } from "@styled-icons/material-rounded/FavoriteBorder"
+import { Favorite as FavoriteFull } from "@styled-icons/material/Favorite"
+import { WatchLater as Later } from '@styled-icons/material-outlined/WatchLater'
+import { WatchLater as LaterFull } from '@styled-icons/material/WatchLater'
+
 
 export const ListItens = styled.li`
   background-color: #f7f7f7;
@@ -64,7 +67,12 @@ export const Button = styled.button`
   font-size: 0.8em;
   padding: 0.5em 1em;
   margin: 0 0.5em;
+
+  ${({ disabled }) => disabled && `
+    cursor: default;
+  `}
 `
+
 
 export const FavIcon = styled(Favorite)`
   color: ${props => props.color};
@@ -72,7 +80,19 @@ export const FavIcon = styled(Favorite)`
   padding: 0 0.25em 0.25em 0.25em;
 `
 
-export const LaterIcon = styled(WatchLater)`
+export const FavIconFull = styled(FavoriteFull)`
+  color: ${props => props.color};
+  height: 1.2em;
+  padding: 0 0.25em 0.25em 0.25em;
+`
+
+export const LaterIcon = styled(Later)`
+  color: ${props => props.color};
+  height: 1.2em;
+  padding: 0 0.25em 0.25em 0.25em;
+`
+
+export const LaterIconFull = styled(LaterFull)`
   color: ${props => props.color};
   height: 1.2em;
   padding: 0 0.25em 0.25em 0.25em;

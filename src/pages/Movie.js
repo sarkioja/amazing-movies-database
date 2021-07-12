@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Fragment }  from 'react';
 import {ErrorBoundary} from 'react-error-boundary'
 import {useParams} from "react-router-dom";
+import { Toaster } from 'react-hot-toast';
 
 import { MovieDetails } from '../services/Movies'
 
@@ -33,6 +34,7 @@ function Movie () {
     <Fragment>
       <Hero title=" The Amazing Movies Database 🎬 "/>
         <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <Toaster position="top-right" />
         <img src={ backdropPath } /> 
 
 

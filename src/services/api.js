@@ -5,9 +5,6 @@ const api = axios.create({
 });
 
 const token = process.env.REACT_APP_TMDB_API_KEY
-
-console.log(token)
-
 api.defaults.headers.authorization = `Bearer ${token}`;
 
 export default api;

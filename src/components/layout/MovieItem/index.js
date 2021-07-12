@@ -1,16 +1,27 @@
 import React, { useContext } from 'react'
 import { useHistory } from "react-router";
+import toast from 'react-hot-toast';
 
 import { StateContext } from '../../../state'
 
 import * as S from './styled'
 
-function MovieItem({id, poster, title, year, description}) {
+function MovieItem({id, poster, title, year, description, hideActions}) {
   const {favorites, setFavorite} = useContext(StateContext)
   const {listItems, setListItem} = useContext(StateContext)
   const history = useHistory();
   const posterPath = `https://image.tmdb.org/t/p/w92/${poster}`
   const fillerPath = `https://www.fillmurray.com/92/138`
+  let isFavorite = false;
+  let isListItem = false;
+
+  favorites.map(item => {
+    item.id == id ? isFavorite = true : ''
+  })
+
+  listItems.map(item => {
+    item.id == id ? isListItem = true : ''
+  })
 
   function handleClick() {
     history.push(`/movie/${id}`);
@@ -29,11 +40,52 @@ function MovieItem({id, poster, title, year, description}) {
 
   const handleFav = (fav) => {
     setFavorite([...favorites, fav])
+    toast.success('Movie marked as favorite.');
   }
-
 
   const handleList = (item) => {
     setListItem([...listItems, item])
+    toast.success('Movie saved to Watchlist.');
+  }
+
+  const Actions = () => {
+    if (hideActions) return ''
+
+    return (
+      <S.Actions>  
+
+        {
+          isListItem ? (
+            <S.Button color="#000080" disabled >
+              <S.LaterIconFull color="#000080"/>
+              Added
+            </S.Button>
+          ) : (
+            <S.Button color="#000080" onClick={ () => handleList({id, poster, title, year, description}) } >
+              <S.LaterIcon color="#000080"/>
+              Watch Later
+            </S.Button>
+          )
+        }
+
+
+        {
+          isFavorite ? (
+            <S.Button color="red" disabled > 
+              <S.FavIconFull color="red" />
+              Saved
+            </S.Button>
+          ) : (
+            <S.Button color="red" onClick={ () => handleFav({id, poster, title, year, description}) } > 
+              <S.FavIcon color="red"/>
+              Add to Favorites
+            </S.Button>
+          )
+        }
+
+
+      </S.Actions>
+    )
   }
 
   return (
@@ -50,18 +102,7 @@ function MovieItem({id, poster, title, year, description}) {
           </S.Text>
         </S.Item>
 
-
-        <S.Actions>  
-          <S.Button color="#000080" onClick={ () => handleList({id, poster, title, year, description}) }>
-            <S.LaterIcon color="#000080"/>
-            Watch Later
-          </S.Button>
-
-          <S.Button color="red" onClick={ () => handleFav({id, poster, title, year, description}) }> 
-            <S.FavIcon color="red"/>
-            Add to Favorites
-          </S.Button>
-        </S.Actions>
+        <Actions />
 
       </S.ListItens> 
   )
