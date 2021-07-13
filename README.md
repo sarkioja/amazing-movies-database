@@ -1,5 +1,5 @@
 # 🎬 The Amazing Movies Database 
-This project is a simple interface to tmdb.org API, consuming a large movie database, and allowing the user search for any movie, save his favorites or add them to a watchlist.
+This project is a simple interface to tmdb.org API, consuming a large movie database, and allowing users to search for any movie, save their favorites and create a watchlist.
 
 ### [Demo](https://amazing-movies-database.vercel.app)
 
