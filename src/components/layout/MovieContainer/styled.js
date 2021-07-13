@@ -28,9 +28,10 @@ export const Image = styled.img`
 export const TitleWrapper = styled.div`
   background-color: rgba(0,0,0, 0.4);
   color: #fff;
+  min-height: 4.4em;
   padding: 0.5em 0 0.5em 8em;
   position: relative;
-  top: -4.4em; 
+  top: -4.4em;
 `
 
 export const Title = styled.h2`
