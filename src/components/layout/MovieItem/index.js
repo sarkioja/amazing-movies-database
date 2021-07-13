@@ -28,8 +28,8 @@ function MovieItem({id, poster, title, year, description, hideActions}) {
   }
 
   const clampText = (text) => {
-    let maxLength = 300;
-    let clamp = text.match(/.{1,300}(\s|$)/g)
+    let maxLength = 200;
+    let clamp = text.match(/.{1,200}(\s|$)/g)
 
     if (text.length > maxLength) {
       return `${clamp[0]}...`

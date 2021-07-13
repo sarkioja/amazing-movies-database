@@ -53,8 +53,9 @@ export const Actions = styled.div`
   display: flex;
   justify-content: flex-end;
   position: relative;
-  top: -1em;
-  padding: 0.5em 0.5em 0;
+  top: 0;
+  padding: 0.5em;
+  margin-top: 0.5em;
 `
 
 export const Button = styled.button`
