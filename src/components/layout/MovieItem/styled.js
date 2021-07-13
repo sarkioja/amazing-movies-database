@@ -65,11 +65,20 @@ export const Button = styled.button`
   cursor: pointer;
   font-family: inherit;
   font-size: 0.8em;
-  padding: 0.5em 1em;
   margin: 0 0.5em;
+  padding: 0.5em 1em;
+  transition: opacity .2s ease-in-out;  
+
+  &:hover {
+    opacity: 0.6;
+  }
 
   ${({ disabled }) => disabled && `
     cursor: default;
+    
+    &:hover {
+      opacity: 1;
+    }
   `}
 `
 

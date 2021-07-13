@@ -16,7 +16,6 @@ function SearchResults() {
         setIsLoading(true);
         const movies = await SearchMovie(search)
   
-        console.log('setou o data', movies);
         setData(movies.results);
         setIsLoading(false);
       }
