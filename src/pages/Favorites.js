@@ -1,6 +1,5 @@
 import React, { Fragment, useContext }  from 'react';
 import {ErrorBoundary} from 'react-error-boundary'
-import { Toaster } from 'react-hot-toast';
 
 import { StateContext } from '../state'
 
@@ -38,7 +37,6 @@ function Favorites () {
     <Fragment>
       <Hero title=" The Amazing Movies Database 🎬 "/>
         <ErrorBoundary FallbackComponent={ErrorFallback}>
-        <Toaster position="top-right" />
 
           <Container title="Favorites">
             <Favs />

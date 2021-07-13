@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import { ErrorBoundary } from 'react-error-boundary'
-import { Toaster } from 'react-hot-toast';
 
 import ErrorFallback from '../components/layout/ErrorFallback';
 import Hero from '../components/layout/HeroContainer';
@@ -16,7 +15,6 @@ function Home () {
       <Hero title=" The Amazing Movies Database 🎬 "/>
 
       <ErrorBoundary FallbackComponent={ ErrorFallback }>
-        <Toaster position="top-right" />
         <Search />
         <SearchResults />
       </ErrorBoundary>

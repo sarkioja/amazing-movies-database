@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import { useHistory } from "react-router";
+import { Toaster } from 'react-hot-toast';
 
 import Menu from '../Menu'
 
@@ -15,6 +16,8 @@ function Hero(props) {
 
   return (
     <Fragment>
+      <Toaster position="top-right" />
+
       <S.Header>
         <S.Title onClick={ handleClick }>
           <S.Link> { title } </S.Link>

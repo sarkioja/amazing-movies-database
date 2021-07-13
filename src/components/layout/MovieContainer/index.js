@@ -10,22 +10,22 @@ function MovieContainer(props) {
 
   return (
     <S.Container>
-      <S.Backdrop background={backdropUrl + backdrop_path}> </S.Backdrop>
+      <S.Backdrop background={ props.data ? backdropUrl + backdrop_path : '' }> </S.Backdrop>
 
       <S.TitleWrapper>
-        <S.Title> { title } </S.Title>
+        <S.Title> { props.data ? title : ''} </S.Title>
       </S.TitleWrapper>
 
       <S.SloganWrapper>
-        <S.Slogan> { tagline } </S.Slogan>
+        <S.Slogan> { props.data ? tagline : ''} </S.Slogan>
       </S.SloganWrapper>
 
       <S.Poster>
-        <S.Image src={posterUrl + poster_path} />
+        <S.Image src={props.data ? posterUrl + poster_path : ''} />
       </S.Poster>
 
       <S.Overview>
-        { overview }
+        { props.data ? overview : '' }
       </S.Overview>
 
     </S.Container>
